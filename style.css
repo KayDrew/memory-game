@@ -1,0 +1,6 @@
+
+.container {margin: auto;
+width:50%;}
+.cards{display: grid;
+grid-template-columns: 3fr;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    	
+    <title>Will Figure out </title>
+        <link rel="stylesheet" href="font-awesome.min.css">
+ <script src="./fontawesome.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <h1 class="heading">Tests</h1>
+    <div class="cards"></div>
+    
+    <img src="" class="fa "  id="square1" style="width:100px; "/>
+        <img src="" class="fa"  id="square2" style="width:100px; "/>
+            <img src="" class="fa"  id="square3" style="width:100px; "/>
+     <div class="cards">
+    <img src="" class="fa" id="square4"  style="width:100px; "/>
+        <img src="" class="fa " id="square5"  style="width:100px; "/>
+            <img src="" class="fa " id="square6"   style="width:100px; "/>
+</div>
+
+    </div>
+    </body>
+    <script>
+    	const images=["bear.jpg","chick.jpg","lion.png","camel.jpg","teddy.png","mouse.jpg","boar.png","elephant.png"];
+    var countBear=0;
+    var countChick=0;
+    var countLion=0;
+const obj= document.getElementsByClassName("fa");
+const square1=document.querySelector("#square1");
+const square2=document.querySelector("#square2");
+const square3 =document.querySelector("#square3");
+const square4 =document.querySelector("#square4");
+const square5=document.querySelector("#square5");
+const square6=document.querySelector("#square6");
+
+var arr=[];
+
+
+function setImages(){
+
+for(let i=0;i< obj.length;++i){
+	
+	var num=Math.floor(Math.random() * (2- 0+ 1)) + 0;
+	
+	if(num===0){
+		
+		if(countBear<2){
+countBear++;
+}
+
+else{
+
+if(countChick<2){
+num=1;
+countChick++;
+
+}
+
+else{
+num=2;
+countLion++;
+
+}
+}
+}
+
+else if(num===1){
+
+if(countChick<2){
+countChick++;
+}
+
+else{
+
+if(countBear<2){
+num=0;
+countBear++;
+
+}
+
+else{
+num=2;
+countLion++;
+
+}
+
+}
+
+}
+
+else{
+	
+	if(countLion<2){
+countLion++;
+}
+
+
+else{
+if(countChick<2){
+num=1;
+countChick++;
+
+}
+
+else{
+num=0;
+countBear++;
+
+}
+
+}
+}
+
+
+arr.push(num);
+
+		
+		obj[i].style.height="200px";
+		
+obj[i].addEventListener("click", move);
+
+setTimeout (function (){
+
+obj[i].src="green.jpg";
+
+},
+
+5000);
+}
+
+
+console.log(arr);
+//console.log(countLion);
+//console.log(countChick);
+//console.log(countBear);
+
+	
+square1.src=images[arr[0]];
+square2.src=images[arr[1]];
+square3.src=images[arr[2]];
+square4.src=images[arr[3]];
+square5.src=images[arr[4]];
+square6.src=images[arr[5]];
+
+}
+
+function  move(){
+	
+this.src="lion.png";
+
+}
+
+setImages();
+
+console.log(square1.src);
+console.log(square2.src);
+</script>
+
+    </html>
