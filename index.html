@@ -45,6 +45,7 @@ let squares={};
 let image1="";
 let image2="";
 let imageCount=0;
+let match=0;
 
 
 function setImages(){
@@ -181,18 +182,21 @@ if(image1 !="" && image2 != ""){
 
 if(image1===image2){
 
-alert("match!");
+if(match<3){
 
+match++;
 image1="";
 image2="";
 count=0;
+
+}
+
 }
 
 else{
 
-count=0;
-image1="";
-image2="";
+if(match !==3){
+	
 
 setTimeout(function (){
 
@@ -203,6 +207,15 @@ clicked.src="green.jpg";
 );
 
 }
+
+}
+
+}
+
+else if(image1 !="" && image2 ==""){
+	
+
+
 
 }
 
