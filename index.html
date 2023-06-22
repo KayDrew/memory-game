@@ -6,32 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     	
-    <title>Will Figure out </title>
-        <link rel="stylesheet" href="font-awesome.min.css">
+    <title>Memory Game</title>
+        <link rel="stylesheet" href="style.css">
  <script src="./fontawesome.js"></script>
 </head>
 
 <body>
 <div class="container">
-    <h1 class="heading">Tests</h1>
-    <div class="cards"></div>
-    
-    <img src="" class="fa "  id="square1" style="width:100px; "/>
-        <img src="" class="fa"  id="square2" style="width:100px; "/>
-            <img src="" class="fa"  id="square3" style="width:100px; "/>
+    <h1 class="heading">MATCH THE SQUARES</h1>
+    <div class="info-buttons">
+    	<span>Attempts:</span><button type="button" id="attempts">2</button>
+<span>Hints:</span><button type="button" id="hint">2</button>
+</div>
+    <div class="cards">
+    <img src="green.jpg" class="fa "  id="square1" style="width:100px;height:120px"/>
+        <img src="green.jpg" class="fa"  id="square2" style="width:100px; height:120px"/>
+            <img src="green.jpg" class="fa"  id="square3" style="width:100px; height:120px"/>
      <div class="cards">
-    <img src="" class="fa" id="square4"  style="width:100px; "/>
-        <img src="" class="fa " id="square5"  style="width:100px; "/>
-            <img src="" class="fa " id="square6"   style="width:100px; "/>
+    <img src="green.jpg" class="fa" id="square4"  style="width:100px; height:120px"/>
+        <img src="green.jpg" class="fa " id="square5"  style="width:100px; height:120px"/>
+            <img src="green.jpg" class="fa " id="square6"   style="width:100px;height:120px "/>
+            </div>
+               <div class="cards">
+               <img src="green.jpg" class="fa" id="square7"  style="width:100px; height:120px"/>
+        <img src="green.jpg" class="fa " id="square8"  style="width:100px; height:120px"/>
+            <img src="green.jpg" class="fa " id="square9"   style="width:100px;height:120px "/>
 </div>
 
+<div class="game-buttons">
+<button type="button" id="start">START</button>
+<button type="button" id="reset">RESET</button>
+
+
+</div>
     </div>
     </body>
     <script>
-    	const images=["bear.jpg","chick.jpg","lion.png","camel.jpg","teddy.png","mouse.jpg","boar.png","elephant.png"];
+    	const images=["bear.jpg","chick.jpg","lion.png"];
     let countBear=0;
     let countChick=0;
     let countLion=0;
+    
 const obj= document.getElementsByClassName("fa");
 const square1=document.querySelector("#square1");
 const square2=document.querySelector("#square2");
@@ -39,17 +54,27 @@ const square3 =document.querySelector("#square3");
 const square4 =document.querySelector("#square4");
 const square5=document.querySelector("#square5");
 const square6=document.querySelector("#square6");
+const square7=document.querySelector("#square7");
+const square8=document.querySelector("#square8");
+const square9=document.querySelector("#square9");
+const start= document.querySelector("#start");
+const hint= document.querySelector("#hint");
 
 let arr=[];
 let squares={};
-let image1="";
-let image2="";
-let imageCount=0;
 let same=0;
-let match="";
+let match=[];
+var attempts=0;
+
+let hints=2;
 
 
 function setImages(){
+ attempts=4;
+ arr=[];
+ squares={};
+same=0;
+hints=2;
 
 for(let i=0;i< obj.length;++i){
 	
@@ -57,13 +82,13 @@ for(let i=0;i< obj.length;++i){
 	
 	if(num===0){
 		
-		if(countBear<2){
+		if(countBear<3){
 countBear++;
 }
 
 else{
 
-if(countChick<2){
+if(countChick<3){
 num=1;
 countChick++;
 
@@ -79,13 +104,13 @@ countLion++;
 
 else if(num===1){
 
-if(countChick<2){
+if(countChick<3){
 countChick++;
 }
 
 else{
 
-if(countBear<2){
+if(countBear<3){
 num=0;
 countBear++;
 
@@ -103,13 +128,13 @@ countLion++;
 
 else{
 	
-	if(countLion<2){
+	if(countLion<3){
 countLion++;
 }
 
 
 else{
-if(countChick<2){
+if(countChick<3){
 num=1;
 countChick++;
 
@@ -127,7 +152,8 @@ countBear++;
 
 arr.push(num);
 
-obj[i].style.height="200px";
+console.log(arr);
+
 		
 obj[i].addEventListener("click", guess);
 
@@ -146,13 +172,20 @@ square3.src=images[arr[2]];
 square4.src=images[arr[3]];
 square5.src=images[arr[4]];
 square6.src=images[arr[5]];
+square7.src=images[arr[6]];
+square8.src=images[arr[7]];
+square9.src=images[arr[8]];
 
 squares={square1: square1.src,
 square2: square2. src,
 square3:square3.src,
 square4: square4.src, 
 square5:square5.src,
-square6:square6.src}
+square6:square6.src,
+square7:square7.src,
+square8: square8.src, 
+square9:square9.src
+}
 
 }
 
@@ -161,30 +194,44 @@ function  guess(){
 	
 	var clicked=this;
 	
-	if(same<3){
+	if(attempts>=0){
+	
+	if(same<6){
 	
 if( squares.hasOwnProperty(this.id)){
 
 clicked.src=squares[this.id];
 
-if(match==""){
+if(match.length==0){
 	
-match=clicked.src;
+match.push(clicked.src);
 
 }
 
 else{
 
-if(clicked.src==match){
+if(clicked.src==match[0]){
+	
+	if(match.length==2){
 
 same++;
 
-match="";
+match=[];
+
+}
+
+else{
+	same++;
+match.push(clicked.src);
+
+}
 
 }
 
 
 else{
+
+attempts--;
 
 setTimeout (function (){
 clicked.src="green.jpg";
@@ -202,7 +249,22 @@ clicked.src="green.jpg";
 
 }
 
-setImages();
+else{
+
+alert("Game over!");
+
+}
+
+}
+
+
+function useHints(){
+
+
+}
+
+start.addEventListener("click",setImages);
+hint.addEventListener("click",useHints);
 
 </script>
 

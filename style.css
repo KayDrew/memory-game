@@ -1,6 +1,12 @@
 
-.container {margin: auto;
-width:50%;}
-.cards{display: grid;
-grid-template-columns: 3fr;
+.container {margin: 0 auto;
+width:85%;}
+
+img{
+
+border-radius: 2px;
+border: 2px solid rgb(0,255,0);
+
 }
+
+h1{font-family: monospace;}
