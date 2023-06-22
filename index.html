@@ -45,7 +45,8 @@ let squares={};
 let image1="";
 let image2="";
 let imageCount=0;
-let match=0;
+let same=0;
+let match="";
 
 
 function setImages(){
@@ -159,64 +160,42 @@ square6:square6.src}
 function  guess(){
 	
 	var clicked=this;
+	
+	if(same<3){
+	
 if( squares.hasOwnProperty(this.id)){
 
-this.src=squares[this.id];
+clicked.src=squares[this.id];
 
-if(imageCount===0){
-
-image1=this.src;
-
-imageCount++;
-
-}
-
-else{
-
-image2=this.src;
-imageCount--;
-
-}
-
-if(image1 !="" && image2 != ""){
-
-if(image1===image2){
-
-if(match<3){
-
-match++;
-image1="";
-image2="";
-count=0;
-
-}
-
-}
-
-else{
-
-if(match !==3){
+if(match==""){
 	
+match=clicked.src;
 
-setTimeout(function (){
+}
 
+else{
+
+if(clicked.src==match){
+
+same++;
+
+match="";
+
+}
+
+
+else{
+
+setTimeout (function (){
 clicked.src="green.jpg";
 
 },1000
 
+
 );
-
 }
 
 }
-
-}
-
-else if(image1 !="" && image2 ==""){
-	
-
-
-
 }
 
 }
