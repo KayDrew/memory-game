@@ -59,6 +59,7 @@ const square8=document.querySelector("#square8");
 const square9=document.querySelector("#square9");
 const start= document.querySelector("#start");
 const hint= document.querySelector("#hint");
+const reset= document.querySelector("#reset");
 
 let arr=[];
 let squares={};
@@ -70,6 +71,8 @@ let hints=2;
 
 
 function setImages(){
+	
+	this.disabled=true;
  attempts=4;
  arr=[];
  squares={};
@@ -152,8 +155,6 @@ countBear++;
 
 arr.push(num);
 
-console.log(arr);
-
 		
 obj[i].addEventListener("click", guess);
 
@@ -164,6 +165,8 @@ obj[i].src="green.jpg";
 },
 
 5000);
+
+clearTimeout();
 }
 
 square1.src=images[arr[0]];
@@ -240,6 +243,8 @@ clicked.src="green.jpg";
 
 
 );
+
+clearTimeout();
 }
 
 }
@@ -253,19 +258,73 @@ else{
 
 alert("Game over!");
 
+setTimeout (function (){
+clicked.src="green.jpg";
+
+},1000
+
+
+);
+
 }
 
 }
 
 
 function useHints(){
+	
+setTimeout(function(){
+	
+square1.src=images[arr[0]];
+square2.src=images[arr[1]];
+square3.src=images[arr[2]];
+square4.src=images[arr[3]];
+square5.src=images[arr[4]];
+square6.src=images[arr[5]];
+square7.src=images[arr[6]];
+square8.src=images[arr[7]];
+square9.src=images[arr[8]];
+},2000
 
+
+);
+
+clearTimeout();
+
+for(let i=0;i< obj.length;++i){
+
+obj[i].src="green.jpg";
+
+
+}
+	
+--hints;
+
+}
+
+
+function  resetGame(){
+	
+	start.disabled=false;
+	
+	for(let i=0;i< obj.length;++i){
+
+setTimeout (function (){
+obj[i].src="green.jpg";
+
+},1000
+
+);
+
+clearTimeout();
+
+}
 
 }
 
 start.addEventListener("click",setImages);
 hint.addEventListener("click",useHints);
-
+reset.addEventListener("click", resetGame);
 </script>
 
     </html>
