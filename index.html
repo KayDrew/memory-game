@@ -15,22 +15,22 @@
 <div class="container">
     <h1 class="heading">MATCH THE SQUARES</h1>
     <div class="info-buttons">
-    	<span>Attempts:</span><button type="button" id="attempts">2</button>
-<span>Hints:</span><button type="button" id="hint">2</button>
+    	<span>Attempts:</span><span id="attempts">4</span>
+<button type="button" id="hint">USE HINT</button><span id="hintText">2</span>
 </div>
     <div class="cards">
-    <img src="green.jpg" class="fa "  id="square1" style="width:100px;height:120px"/>
-        <img src="green.jpg" class="fa"  id="square2" style="width:100px; height:120px"/>
-            <img src="green.jpg" class="fa"  id="square3" style="width:100px; height:120px"/>
+    <img src="card.jpeg" class="fa "  id="square1" style="width:100px;height:120px"/>
+        <img src="card.jpeg" class="fa"  id="square2" style="width:100px; height:120px"/>
+            <img src="card.jpeg" class="fa"  id="square3" style="width:100px; height:120px"/>
      <div class="cards">
-    <img src="green.jpg" class="fa" id="square4"  style="width:100px; height:120px"/>
-        <img src="green.jpg" class="fa " id="square5"  style="width:100px; height:120px"/>
-            <img src="green.jpg" class="fa " id="square6"   style="width:100px;height:120px "/>
+    <img src="card.jpeg" class="fa" id="square4"  style="width:100px; height:120px"/>
+        <img src="card.jpeg" class="fa " id="square5"  style="width:100px; height:120px"/>
+            <img src="card.jpeg" class="fa " id="square6"   style="width:100px;height:120px "/>
             </div>
                <div class="cards">
-               <img src="green.jpg" class="fa" id="square7"  style="width:100px; height:120px"/>
-        <img src="green.jpg" class="fa " id="square8"  style="width:100px; height:120px"/>
-            <img src="green.jpg" class="fa " id="square9"   style="width:100px;height:120px "/>
+               <img src="card.jpeg" class="fa" id="square7"  style="width:100px; height:120px"/>
+        <img src="card.jpeg" class="fa " id="square8"  style="width:100px; height:120px"/>
+            <img src="card.jpeg" class="fa " id="square9"   style="width:100px;height:120px "/>
 </div>
 
 <div class="game-buttons">
@@ -43,6 +43,8 @@
     </body>
     <script>
     	const images=["bear.jpg","chick.jpg","lion.png"];
+        //	const images1=["fish.jpg","mouse.jpg","elephant.png"];
+            //	const images2=["camel.jpg","boa.jpg","teddy.png"];
     let countBear=0;
     let countChick=0;
     let countLion=0;
@@ -60,6 +62,8 @@ const square9=document.querySelector("#square9");
 const start= document.querySelector("#start");
 const hint= document.querySelector("#hint");
 const reset= document.querySelector("#reset");
+const attempt=document.querySelector("#attempts");
+const hintText=document.querySelector("#hintText");
 
 let arr=[];
 let squares={};
@@ -72,12 +76,19 @@ let hints=2;
 
 function setImages(){
 	
+	attempts=4;
 	this.disabled=true;
- attempts=4;
+	attempt.innerHTML=attempts;
+
  arr=[];
  squares={};
+ match=[];
 same=0;
 hints=2;
+countChick=0;
+countBear=0;
+countLion=0;
+
 
 for(let i=0;i< obj.length;++i){
 	
@@ -160,7 +171,7 @@ obj[i].addEventListener("click", guess);
 
 setTimeout (function (){
 
-obj[i].src="green.jpg";
+obj[i].src="card.jpeg";
 
 },
 
@@ -197,7 +208,7 @@ function  guess(){
 	
 	var clicked=this;
 	
-	if(attempts>=0){
+	if(attempts>0){
 	
 	if(same<6){
 	
@@ -236,8 +247,10 @@ else{
 
 attempts--;
 
+attempt.innerHTML=attempts;
+
 setTimeout (function (){
-clicked.src="green.jpg";
+clicked.src="card.jpeg";
 
 },1000
 
@@ -259,7 +272,7 @@ else{
 alert("Game over!");
 
 setTimeout (function (){
-clicked.src="green.jpg";
+clicked.src="card.jpeg";
 
 },1000
 
@@ -293,12 +306,13 @@ clearTimeout();
 
 for(let i=0;i< obj.length;++i){
 
-obj[i].src="green.jpg";
+obj[i].src="card.jpeg";
 
 
 }
 	
 --hints;
+hintText.innerHTML=hints;
 
 }
 
@@ -306,19 +320,29 @@ obj[i].src="green.jpg";
 function  resetGame(){
 	
 	start.disabled=false;
+	attempt.innerHTML=attempts;
+	
+	
+
+
 	
 	for(let i=0;i< obj.length;++i){
 
 setTimeout (function (){
-obj[i].src="green.jpg";
+obj[i].src="card.jpeg";
 
 },1000
 
 );
 
-clearTimeout();
+
 
 }
+
+clearTimeout();
+
+console.log(arr);
+console.log(JSON.stringify(match));
 
 }
 
