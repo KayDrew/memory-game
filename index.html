@@ -286,8 +286,10 @@ clicked.src="card.jpeg";
 
 function useHints(){
 	
-setTimeout(function(){
+	if(hints>0){
 	
+setTimeout (function (){
+
 square1.src=images[arr[0]];
 square2.src=images[arr[1]];
 square3.src=images[arr[2]];
@@ -297,22 +299,27 @@ square6.src=images[arr[5]];
 square7.src=images[arr[6]];
 square8.src=images[arr[7]];
 square9.src=images[arr[8]];
-},2000
 
+},
 
-);
+2000);
 
 clearTimeout();
 
-for(let i=0;i< obj.length;++i){
-
+setTimeout ( function (){
+	for(let i=0;i< obj.length;++i){
 obj[i].src="card.jpeg";
-
-
 }
+
+
+},4500);
 	
 --hints;
+
+}
 hintText.innerHTML=hints;
+
+
 
 }
 
