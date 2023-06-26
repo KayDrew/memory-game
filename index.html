@@ -19,18 +19,18 @@
 <button type="button" id="hint">USE HINT</button><span id="hintText">2</span>
 </div>
     <div class="cards">
-    <img src="card.jpeg" class="fa "  id="square1" style="width:100px;height:120px"/>
-        <img src="card.jpeg" class="fa"  id="square2" style="width:100px; height:120px"/>
-            <img src="card.jpeg" class="fa"  id="square3" style="width:100px; height:120px"/>
+    <img src="card5.jpeg" class="fa "  id="square1" style="width:100px;height:120px"/>
+        <img src="card5.jpeg" class="fa"  id="square2" style="width:100px; height:120px"/>
+            <img src="card5.jpeg" class="fa"  id="square3" style="width:100px; height:120px"/>
      <div class="cards">
-    <img src="card.jpeg" class="fa" id="square4"  style="width:100px; height:120px"/>
-        <img src="card.jpeg" class="fa " id="square5"  style="width:100px; height:120px"/>
-            <img src="card.jpeg" class="fa " id="square6"   style="width:100px;height:120px "/>
+    <img src="card5.jpeg" class="fa" id="square4"  style="width:100px; height:120px"/>
+        <img src="card5.jpeg" class="fa " id="square5"  style="width:100px; height:120px"/>
+            <img src="card5.jpeg" class="fa " id="square6"   style="width:100px;height:120px "/>
             </div>
                <div class="cards">
-               <img src="card.jpeg" class="fa" id="square7"  style="width:100px; height:120px"/>
-        <img src="card.jpeg" class="fa " id="square8"  style="width:100px; height:120px"/>
-            <img src="card.jpeg" class="fa " id="square9"   style="width:100px;height:120px "/>
+               <img src="card5.jpeg" class="fa" id="square7"  style="width:100px; height:120px"/>
+        <img src="card5.jpeg" class="fa " id="square8"  style="width:100px; height:120px"/>
+            <img src="card5.jpeg" class="fa " id="square9"   style="width:100px;height:120px "/>
 </div>
 
 <div class="game-buttons">
@@ -73,6 +73,7 @@ var attempts=0;
 
 let hints=2;
 
+const audio= new Audio("./cardSound.mp3");
 
 function setImages(){
 	
@@ -169,16 +170,27 @@ arr.push(num);
 		
 obj[i].addEventListener("click", guess);
 
+clearTimeout();
+
 setTimeout (function (){
 
-obj[i].src="card.jpeg";
+obj[i].src="card5.jpeg";
 
 },
 
 5000);
 
-clearTimeout();
+
 }
+
+audio.play();
+
+clearTimeout();
+
+setTimeout (function(){
+audio.pause();
+
+},800);
 
 square1.src=images[arr[0]];
 square2.src=images[arr[1]];
@@ -189,6 +201,7 @@ square6.src=images[arr[5]];
 square7.src=images[arr[6]];
 square8.src=images[arr[7]];
 square9.src=images[arr[8]];
+
 
 squares={square1: square1.src,
 square2: square2. src,
@@ -249,8 +262,10 @@ attempts--;
 
 attempt.innerHTML=attempts;
 
+clearTimeout();
+
 setTimeout (function (){
-clicked.src="card.jpeg";
+clicked.src="card5.jpeg";
 
 },1000
 
@@ -272,7 +287,7 @@ else{
 alert("Game over!");
 
 setTimeout (function (){
-clicked.src="card.jpeg";
+clicked.src="card5.jpeg";
 
 },1000
 
@@ -308,7 +323,7 @@ clearTimeout();
 
 setTimeout ( function (){
 	for(let i=0;i< obj.length;++i){
-obj[i].src="card.jpeg";
+obj[i].src="card5.jpeg";
 }
 
 
@@ -328,15 +343,13 @@ function  resetGame(){
 	
 	start.disabled=false;
 	attempt.innerHTML=attempts;
-	
-	
 
-
+clearTimeout();
 	
 	for(let i=0;i< obj.length;++i){
 
 setTimeout (function (){
-obj[i].src="card.jpeg";
+obj[i].src="card5.jpeg";
 
 },1000
 
@@ -346,7 +359,6 @@ obj[i].src="card.jpeg";
 
 }
 
-clearTimeout();
 
 console.log(arr);
 console.log(JSON.stringify(match));
