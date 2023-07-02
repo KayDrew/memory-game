@@ -19,18 +19,18 @@
 <button type="button" id="hint">USE HINT</button><span id="hintText">2</span>
 </div>
     <div class="cards">
-    <img src="card5.jpeg" class="fa "  id="square1" style="width:100px;height:120px"/>
-        <img src="card5.jpeg" class="fa"  id="square2" style="width:100px; height:120px"/>
-            <img src="card5.jpeg" class="fa"  id="square3" style="width:100px; height:120px"/>
+    <img src="card5.jpeg" class="fa "  id="square1" style="width:80px;height:100px"/>
+        <img src="card5.jpeg" class="fa"  id="square2" style="width:80px; height:100px"/>
+            <img src="card5.jpeg" class="fa"  id="square3" style="width:80px; height:100px"/>
      <div class="cards">
-    <img src="card5.jpeg" class="fa" id="square4"  style="width:100px; height:120px"/>
-        <img src="card5.jpeg" class="fa " id="square5"  style="width:100px; height:120px"/>
-            <img src="card5.jpeg" class="fa " id="square6"   style="width:100px;height:120px "/>
+    <img src="card5.jpeg" class="fa" id="square4"  style="width:80px; height:100px"/>
+        <img src="card5.jpeg" class="fa " id="square5"  style="width:80px; height:100px"/>
+            <img src="card5.jpeg" class="fa " id="square6"   style="width:80px;height:100px "/>
             </div>
                <div class="cards">
-               <img src="card5.jpeg" class="fa" id="square7"  style="width:100px; height:120px"/>
-        <img src="card5.jpeg" class="fa " id="square8"  style="width:100px; height:120px"/>
-            <img src="card5.jpeg" class="fa " id="square9"   style="width:100px;height:120px "/>
+               <img src="card5.jpeg" class="fa" id="square7"  style="width:80px; height:100px"/>
+        <img src="card5.jpeg" class="fa " id="square8"  style="width:80px; height:100px"/>
+            <img src="card5.jpeg" class="fa " id="square9"   style="width:80px;height:100px "/>
 </div>
 
 <div class="game-buttons">
@@ -69,7 +69,8 @@ let arr=[];
 let squares={};
 let same=0;
 let match=[];
-var attempts=0;
+let attempts=0;
+let selected=[];
 
 let hints=2;
 
@@ -84,11 +85,13 @@ function setImages(){
  arr=[];
  squares={};
  match=[];
+ selected=[];
 same=0;
 hints=2;
 countChick=0;
 countBear=0;
 countLion=0;
+
 
 
 for(let i=0;i< obj.length;++i){
@@ -202,7 +205,6 @@ square7.src=images[arr[6]];
 square8.src=images[arr[7]];
 square9.src=images[arr[8]];
 
-
 squares={square1: square1.src,
 square2: square2. src,
 square3:square3.src,
@@ -213,6 +215,8 @@ square7:square7.src,
 square8: square8.src, 
 square9:square9.src
 }
+
+
 
 }
 
@@ -302,9 +306,17 @@ clicked.src="card5.jpeg";
 function useHints(){
 	
 	if(hints>0){
-	
-setTimeout (function (){
+	for(let i=0;i< obj.length;++i){
+		
+		if(obj[i].src.split("/"). pop()!=="card5.jpeg"){
+selected.push(obj[i].id);
+}
 
+}
+
+
+setTimeout (function (){
+	
 square1.src=images[arr[0]];
 square2.src=images[arr[1]];
 square3.src=images[arr[2]];
@@ -319,11 +331,18 @@ square9.src=images[arr[8]];
 
 2000);
 
+
 clearTimeout();
+
 
 setTimeout ( function (){
 	for(let i=0;i< obj.length;++i){
+		
+	if(selected.includes(obj[i].id)==false){
+	
 obj[i].src="card5.jpeg";
+}
+
 }
 
 
@@ -360,8 +379,6 @@ obj[i].src="card5.jpeg";
 }
 
 
-console.log(arr);
-console.log(JSON.stringify(match));
 
 }
 
