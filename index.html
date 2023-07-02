@@ -43,8 +43,8 @@
     </body>
     <script>
     	const images=["bear.jpg","chick.jpg","lion.png"];
-        //	const images1=["fish.jpg","mouse.jpg","elephant.png"];
-            //	const images2=["camel.jpg","boa.jpg","teddy.png"];
+        	const images1=["fish.jpg","mouse.jpg","elephant.png"];
+            	const images2=["camel.jpg","boar.jpg","teddy.png"];
     let countBear=0;
     let countChick=0;
     let countLion=0;
@@ -72,6 +72,7 @@ let match=[];
 let attempts=0;
 let selected=[];
 
+
 let hints=2;
 
 const audio= new Audio("./cardSound.mp3");
@@ -94,13 +95,15 @@ countLion=0;
 
 
 
+
 for(let i=0;i< obj.length;++i){
 	
+	var shuffle=Math.floor(Math.random() * (2- 0+ 1)) + 0;
 	var num=Math.floor(Math.random() * (2- 0+ 1)) + 0;
 	
 	if(num===0){
 		
-		if(countBear<3){
+		if(countBear<3 ){
 countBear++;
 }
 
@@ -195,6 +198,8 @@ audio.pause();
 
 },800);
 
+if(shuffle==0){
+
 square1.src=images[arr[0]];
 square2.src=images[arr[1]];
 square3.src=images[arr[2]];
@@ -204,6 +209,34 @@ square6.src=images[arr[5]];
 square7.src=images[arr[6]];
 square8.src=images[arr[7]];
 square9.src=images[arr[8]];
+
+}
+
+else if(shuffle==1){
+	
+	square1.src=images1[arr[0]];
+square2.src=images1[arr[1]];
+square3.src=images1[arr[2]];
+square4.src=images1[arr[3]];
+square5.src=images1[arr[4]];
+square6.src=images1[arr[5]];
+square7.src=images1[arr[6]];
+square8.src=images1[arr[7]];
+square9.src=images1[arr[8]];
+	}
+	
+	else{
+square1.src=images2[arr[0]];
+square2.src=images2[arr[1]];
+square3.src=images2[arr[2]];
+square4.src=images2[arr[3]];
+square5.src=images2[arr[4]];
+square6.src=images2[arr[5]];
+square7.src=images2[arr[6]];
+square8.src=images2[arr[7]];
+square9.src=images2[arr[8]];
+
+}
 
 squares={square1: square1.src,
 square2: square2. src,
@@ -317,6 +350,8 @@ selected.push(obj[i].id);
 
 setTimeout (function (){
 	
+if(shuffle==0){
+
 square1.src=images[arr[0]];
 square2.src=images[arr[1]];
 square3.src=images[arr[2]];
@@ -326,6 +361,34 @@ square6.src=images[arr[5]];
 square7.src=images[arr[6]];
 square8.src=images[arr[7]];
 square9.src=images[arr[8]];
+
+}
+
+else if(shuffle==1){
+	
+	square1.src=images1[arr[0]];
+square2.src=images1[arr[1]];
+square3.src=images1[arr[2]];
+square4.src=images1[arr[3]];
+square5.src=images1[arr[4]];
+square6.src=images1[arr[5]];
+square7.src=images1[arr[6]];
+square8.src=images1[arr[7]];
+square9.src=images1[arr[8]];
+	}
+	
+	else{
+square1.src=images2[arr[0]];
+square2.src=images2[arr[1]];
+square3.src=images2[arr[2]];
+square4.src=images2[arr[3]];
+square5.src=images2[arr[4]];
+square6.src=images2[arr[5]];
+square7.src=images2[arr[6]];
+square8.src=images2[arr[7]];
+square9.src=images2[arr[8]];
+
+}
 
 },
 
@@ -377,7 +440,6 @@ obj[i].src="card5.jpeg";
 
 
 }
-
 
 
 }
