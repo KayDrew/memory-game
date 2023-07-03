@@ -71,6 +71,8 @@ let same=0;
 let match=[];
 let attempts=0;
 let selected=[];
+let shuffle=0;
+let rounds=0;
 
 
 let hints=2;
@@ -79,9 +81,11 @@ const audio= new Audio("./cardSound.mp3");
 
 function setImages(){
 	
+	if(rounds<3){
 	attempts=4;
 	this.disabled=true;
 	attempt.innerHTML=attempts;
+	hintText.innerHTML=hints;
 
  arr=[];
  squares={};
@@ -98,7 +102,7 @@ countLion=0;
 
 for(let i=0;i< obj.length;++i){
 	
-	var shuffle=Math.floor(Math.random() * (2- 0+ 1)) + 0;
+	 shuffle=Math.floor(Math.random() * (2- 0+ 1)) + 0;
 	var num=Math.floor(Math.random() * (2- 0+ 1)) + 0;
 	
 	if(num===0){
@@ -249,7 +253,7 @@ square8: square8.src,
 square9:square9.src
 }
 
-
+}
 
 }
 
@@ -316,6 +320,7 @@ clearTimeout();
 }
 
 }
+
 
 }
 
@@ -443,6 +448,8 @@ obj[i].src="card5.jpeg";
 
 
 }
+
+
 
 start.addEventListener("click",setImages);
 hint.addEventListener("click",useHints);
