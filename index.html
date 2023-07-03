@@ -80,25 +80,24 @@ let hints=2;
 const audio= new Audio("./cardSound.mp3");
 
 function setImages(){
-	
-	if(rounds<3){
-	attempts=4;
 	this.disabled=true;
+	
+	if(rounds==0){
+	attempts=4;
+	hints=2;
 	attempt.innerHTML=attempts;
 	hintText.innerHTML=hints;
+}
 
  arr=[];
  squares={};
  match=[];
  selected=[];
 same=0;
-hints=2;
+
 countChick=0;
 countBear=0;
 countLion=0;
-
-
-
 
 for(let i=0;i< obj.length;++i){
 	
@@ -172,6 +171,7 @@ countBear++;
 }
 
 }
+
 }
 
 
@@ -253,7 +253,7 @@ square8: square8.src,
 square9:square9.src
 }
 
-}
+
 
 }
 
@@ -263,9 +263,8 @@ function  guess(){
 	var clicked=this;
 	
 	if(attempts>0){
-	
-	if(same<6){
-	
+
+		
 if( squares.hasOwnProperty(this.id)){
 
 clicked.src=squares[this.id];
@@ -319,8 +318,16 @@ clearTimeout();
 }
 }
 
-}
 
+if(same>5){
+	
+alert("congratulations");
+
+rounds++;
+start.disabled=false;
+start.click();
+
+}
 
 }
 
@@ -337,6 +344,7 @@ clicked.src="card5.jpeg";
 );
 
 }
+
 
 }
 
