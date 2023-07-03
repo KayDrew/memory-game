@@ -34,9 +34,10 @@
             <img src="card5.jpeg" class="fa " id="square9"   style="width:80px;height:100px "/>
 </div>
    <div class="hide">
-               <img src="card5.jpeg" id="square10"  style="width:80px; height:100px"/>
-        <img src="card5.jpeg" id="square11"  style="width:80px; height:100px"/>
-            <img src="card5.jpeg" id="square12"   style="width:80px;height:100px "/>
+               <button id="blue"  style="width:60px; height:120px;background-color:#348ceb; border-color: #63b7cf"></button>
+        <button  id="green"  style="width:60px; height:120px;background-color:#34eb5b;border-color:#a0fc7c"></button>
+            <button id="yellow"   style="width:60px;height:120px;background-color:#ebd534;border-color:#fff652"></button>
+                 <button id="red"   style="width:60px;height:120px;background-color:#eb4c34; border-color:#ff7a52"></button>
 </div>
 
 <div class="game-buttons">
@@ -65,9 +66,10 @@ const square6=document.querySelector("#square6");
 const square7=document.querySelector("#square7");
 const square8=document.querySelector("#square8");
 const square9=document.querySelector("#square9");
-const square10=document.querySelector("#square10");
-const square12=document.querySelector("#square12");
-const square11 =document.querySelector("#square11");
+const green=document.querySelector("#green");
+const blue=document.querySelector("#blue");
+const yellow=document.querySelector("#yellow");
+const red= document.querySelector("#red");
 const hide=document.querySelector(".hide");
 const cards1=document.querySelector(".cards");
 const cards2=document.querySelector(".cards2");
@@ -487,9 +489,25 @@ obj[i].src="card5.jpeg";
 
 
 
+function sequence(){
+
+for(let i=0;i<hide.length;++i){
+
+
+}
+}
+
+function selectSequence(){
+var clicked=this;
+}
+
 start.addEventListener("click",setImages);
 hint.addEventListener("click",useHints);
 reset.addEventListener("click", resetGame);
+
+
+
+
 </script>
 
     </html>

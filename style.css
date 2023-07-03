@@ -5,9 +5,18 @@ width:85%;}
 img{
 
 border-radius: 2px;
-border: 2px solid rgba(0,205,205,0.7);
+border: 2px solid rgba(81, 156, 127,1);
 
 
 }
 
 h1{font-family: monospace;}
+
+.hide{
+display
+}
+
+.hide button{
+margin:1px;
+border-radius: 6px 6px 3px 3px;
+}
