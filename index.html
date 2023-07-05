@@ -34,10 +34,10 @@
             <img src="card5.jpeg" class="fa " id="square9"   style="width:80px;height:100px "/>
 </div>
    <div class="hide">
-               <button id="blue"  style="width:60px; height:120px;background-color:#348ceb; border-color: #63b7cf"></button>
-        <button  id="green"  style="width:60px; height:120px;background-color:#34eb5b;border-color:#a0fc7c"></button>
-            <button id="yellow"   style="width:60px;height:120px;background-color:#ebd534;border-color:#fff652"></button>
-                 <button id="red"   style="width:60px;height:120px;background-color:#eb4c34; border-color:#ff7a52"></button>
+               <button id="blue" class="colour"  style="width:60px; height:120px;background-color:#348ceb; border-color: #63b7cf"></button>
+        <button  id="green" class="colour" style="width:60px; height:120px;background-color:#34eb5b;border-color:#a0fc7c"></button>
+            <button id="yellow"  class="colour" style="width:60px;height:120px;background-color:#ebd534;border-color:#fff652"></button>
+                 <button id="red" class="colour"   style="width:60px;height:120px;background-color:#eb4c34; border-color:#ff7a52"></button>
 </div>
 
 <div class="game-buttons">
@@ -71,6 +71,7 @@ const blue=document.querySelector("#blue");
 const yellow=document.querySelector("#yellow");
 const red= document.querySelector("#red");
 const hide=document.querySelector(".hide");
+const colour=document.getElementsByClassName("colour");
 const cards1=document.querySelector(".cards");
 const cards2=document.querySelector(".cards2");
 const cards=document.querySelector(".cards1");
@@ -88,12 +89,17 @@ let attempts=0;
 let selected=[];
 let shuffle=0;
 let rounds=0;
+let coreColours=["#348ceb","#34eb5b","#ebd534","#eb4c34"];
+let colours=["blue","green","yellow","red"];
+let order=[];
 
 
 
 let hints=2;
 
 const audio= new Audio("./cardSound.mp3");
+
+
 
 function setImages(){
 	
@@ -118,12 +124,47 @@ countChick=0;
 countBear=0;
 countLion=0;
 
-if(rounds===1){
+if(rounds==1){
 
 hide.style.display="block";
 cards.style.display="none";
 cards2.style.display="none";
 cards1.style.display="none";
+
+var rando=Math.floor(Math.random() * (3- 0+ 1)) + 0;
+
+for(let i=0;i<colours.length;++i){
+	
+colour[i].addEventListener("click", selectSequence);
+
+if(i===rando){
+
+setTimeout(function (){
+
+setInterval(function (){
+colour[i].style.backgroundColor=coreColours[i];
+
+},1000);
+
+},2000);
+
+clearTimeout();
+clearInterval();
+
+setTimeout(function(){
+colour[i].style.backgroundColor=colours[i];
+},2500);
+
+order.push(colour[i].id);
+
+
+}
+
+
+
+}
+
+	
 }
 
 else{
@@ -350,7 +391,7 @@ clearTimeout();
 
 if(same>5){
 	
-alert("congratulations");
+
 
 rounds++;
 start.disabled=false;
@@ -489,16 +530,29 @@ obj[i].src="card5.jpeg";
 
 
 
-function sequence(){
-
-for(let i=0;i<hide.length;++i){
-
-
-}
-}
 
 function selectSequence(){
+	
 var clicked=this;
+
+for(let i=0;i<order.length;++i){
+
+if(order.length<4){
+	
+if(clicked.id==order[i]){
+
+alert(order);
+
+start.disabled=false;
+start.click();
+}
+
+else{
+//alert(clicked.id);
+
+}
+}
+}
 }
 
 start.addEventListener("click",setImages);
